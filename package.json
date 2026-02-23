@@ -2,7 +2,8 @@
   "name": "ts-helper",
   "displayName": "ts-helper",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.3",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.109.0"
   },

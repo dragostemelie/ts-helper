@@ -1,9 +1,10 @@
-import * as vscode from "vscode";
+import type { ExtensionContext } from "vscode";
+import { window, Selection, commands } from "vscode";
 import { findJsxElementAtCursor } from "./utils";
 
-export function activate(context: vscode.ExtensionContext) {
-    const disposable = vscode.commands.registerCommand("ts-helper.selectAll", async () => {
-        const editor = vscode.window.activeTextEditor;
+export function activate(context: ExtensionContext) {
+    const disposable = commands.registerCommand("ts-helper.selectAll", async () => {
+        const editor = window.activeTextEditor;
         if (!editor) {
             return;
         }
@@ -18,11 +19,11 @@ export function activate(context: vscode.ExtensionContext) {
             const startPos = document.positionAt(start);
             const endPos = document.positionAt(end);
 
-			// Select JSX Element
-            editor.selection = new vscode.Selection(startPos, endPos);
+            // Select JSX Element
+            editor.selection = new Selection(startPos, endPos);
         } else {
-			// Select to bracket if not JSX
-            await vscode.commands.executeCommand("editor.action.selectToBracket");
+            // Select to bracket if not JSX
+            await commands.executeCommand("editor.action.selectToBracket");
         }
     });
 
