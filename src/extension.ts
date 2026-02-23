@@ -3,7 +3,7 @@ import { window, Selection, commands } from "vscode";
 import { findJsxElementAtCursor } from "./utils";
 
 export function activate(context: ExtensionContext) {
-    const disposable = commands.registerCommand("ts-helper.selectAll", async () => {
+    const disposable = commands.registerCommand("ts-helper.selectAllInside", async () => {
         const editor = window.activeTextEditor;
         if (!editor) {
             return;
