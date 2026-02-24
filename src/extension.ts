@@ -9,11 +9,11 @@ export function activate(context: ExtensionContext) {
             return;
         }
 
-        const jsxElement = findJsxElementAtCursor(editor);
+        const nodes = findJsxElementAtCursor(editor);
 
-        if (jsxElement) {
-            const start = jsxElement.getStart();
-            const end = jsxElement.getEnd();
+        if (nodes.length) {
+            const start = nodes[0].getStart();
+            const end = nodes[nodes.length - 1].getEnd();
 
             const document = editor.document;
             const startPos = document.positionAt(start);
